@@ -1,1 +1,42 @@
+# Node modules (VERY important)
 node_modules/
+
+# Environment variables (passwords, secrets)
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Build / temp files
+dist/
+build/
+tmp/
+temp/
+
+# Optional: ignore database dumps
+*.sql
+
+# Optional: ignore uploads (if you add later)
+uploads/
+
+# Coverage reports
+coverage/
+
+# Mac system files
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Desktop.ini
