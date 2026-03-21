@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Book</title>
+</head>
+<body>
+
+<h1>Edit Book</h1>
+
+<form action="/update" method="POST">
+  <input type="hidden" name="id" value="<%= book.id %>">
+
+  <input name="title" value="<%= book.title %>">
+  <input name="author" value="<%= book.author %>">
+  <input name="rating" value="<%= book.rating %>">
+  <textarea name="notes"><%= book.notes %></textarea>
+
+  <button>Update</button>
+</form>
+
+</body>
+</html>

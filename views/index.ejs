@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Notes</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="main-container">
+    
+
+  <h1>📚 My Book Notes</h1>
+
+  <div class="sort-buttons">
+  <a href="/?sort=rating"><button>⭐ Sort by Rating</button></a>
+  <a href="/?sort=date"><button>📅 Sort by Date</button></a>
+  <a href="/"><button>🔄 Default</button></a>
+  </div>
+
+  <form action="/add" method="POST">
+    <input name="title" placeholder="Title" required>
+    <input name="author" placeholder="Author" required>
+    <label>Rating:</label>
+    <div class="stars">
+        <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+        <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+        <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+        <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+        <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+    </div>
+    <input name="date" type="date">
+    <textarea name="notes" placeholder="Notes"></textarea>
+    <button>Add Book</button>
+  </form>
+
+  <hr>
+
+  <div class="container">
+    <% books.forEach(book => { %>
+      <div class="card">
+
+        <% if (book.cover_url) { %>
+          <img src="<%= book.cover_url %>">
+        <% } %>
+
+        <h2><%= book.title %></h2>
+        <p><b>Author:</b> <%= book.author %></p>
+        <p>
+        <b>Rating:</b>
+        <%= "⭐".repeat(book.rating || 0) %>
+        </p>        
+        <p><%= book.notes %></p>
+
+        <div class="actions">
+          <form action="/delete" method="POST">
+            <input type="hidden" name="id" value="<%= book.id %>">
+            <button class="delete-btn">Delete</button>
+          </form>
+
+          <a class="edit-link" href="/edit/<%= book.id %>">Edit</a>
+        </div>
+
+      </div>
+    <% }) %>
+  </div>
+
+</div>
+
+</body>
+</html>
