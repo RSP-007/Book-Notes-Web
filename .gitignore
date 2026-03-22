@@ -1,8 +1,9 @@
-# Node modules (VERY important)
+# Node modules
 node_modules/
 
-# Environment variables (passwords, secrets)
+# Environment variables
 .env
+.env.*
 
 # Logs
 logs/
@@ -14,6 +15,7 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
+Desktop.ini
 
 # Editor folders
 .vscode/
@@ -25,10 +27,19 @@ build/
 tmp/
 temp/
 
-# Optional: ignore database dumps
-*.sql
+# Runtime files
+pids/
+*.pid
+*.seed
 
-# Optional: ignore uploads (if you add later)
+# Keep schema file
+!queries.sql
+
+# Ignore DB dumps
+*.dump
+*.bak
+
+# Uploads (if added later)
 uploads/
 
 # Coverage reports
@@ -37,6 +48,3 @@ coverage/
 # Mac system files
 .AppleDouble
 .LSOverride
-
-# Windows system files
-Desktop.ini

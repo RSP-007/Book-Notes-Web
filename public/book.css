@@ -1,0 +1,60 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  margin: 0;
+}
+
+/* FIXED container width to prevent shrinking */
+.book-container {
+  width: 400px; /* fixed width so container doesn't shrink */
+  max-width: 600px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* IMAGE AREA - reserve fixed space and show placeholder if no image */
+.book-img {
+  width: 100%;
+  height: 300px; /* fixed height to keep space reserved */
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #eee; /* light gray placeholder */
+  object-fit: cover;
+  display: block;
+}
+
+/* TEXT NOTES */
+.notes {
+  margin-top: 20px;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.notes h3 {
+  margin-bottom: 10px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  background: #4f46e5;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.back-btn:hover {
+  background: #4338ca;
+}

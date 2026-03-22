@@ -8,7 +8,7 @@
 /* Body */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fb;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
   color: #333;
   margin: 0;
 }
@@ -25,6 +25,11 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
   color: #222;
+}
+
+.darkm-stats-button{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Form Styling */
@@ -75,26 +80,29 @@ hr {
 
 /* Book Grid */
 .container {
-  margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
+  align-items: stretch; /* make all cards same height */
 }
 
 /* Card */
-.card {
+.card { 
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
   transition: transform 0.2s;
+  min-height: 450px; /* fixed height for all cards */
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
-/* Cover */
+/* Card image */
 .card img {
   width: 100%;
   height: 200px;
@@ -103,42 +111,84 @@ hr {
   margin-bottom: 10px;
 }
 
-/* Text */
-.card h2 {
+/* Card content wrapper */
+.card-content {
+  flex: 1; /* takes remaining vertical space */
+}
+
+.c{
+    margin-top: 10px;
+}
+
+/* Card title */
+.card-content h2 {
   font-size: 18px;
   margin-bottom: 5px;
 }
 
-.card p {
+/* Card text */
+.card-content p {
   font-size: 14px;
   margin: 3px 0;
 }
 
-/* Actions */
+/* Actions/buttons at bottom */
 .actions {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+  gap: 10px;
+  margin-top: auto; /* push buttons to bottom */
 }
 
-/* Delete Button */
+.actions form {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.actions a,
+.actions button {
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+/* Buttons colors */
+.view-btn {
+  background: #10b981;
+  color: white;
+}
+
+.view-btn:hover {
+  background: #059669;
+}
+
 .delete-btn {
   background: #ef4444;
+  color: white;
 }
 
 .delete-btn:hover {
   background: #dc2626;
 }
 
-/* Edit Link */
 .edit-link {
-  text-decoration: none;
-  color: #4f46e5;
-  font-weight: bold;
+  background: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
+.edit-link:hover {
+  background: #2563eb;
+}
 
 /* Star Rating */
 .stars {
@@ -155,7 +205,6 @@ hr {
   font-size: 20px;
   color: #ccc;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .stars input:checked ~ label {
@@ -167,17 +216,69 @@ hr {
   color: gold;
 }
 
-
-
-/*Sort buttons*/
+/* Sort buttons */
 .sort-buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
-  align-items: center;
   justify-content: center;
 }
 
 .sort-buttons a {
   text-decoration: none;
 }
+
+/* Search */
+.search-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Dark Mode */
+body.dark {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+body.dark .card,
+body.dark form {
+  background: #1e293b;
+}
+
+body.dark .heading {
+  color: white;
+}
+
+body.dark .edit-link {
+  color: whitesmoke;
+}
+
+/* Header */
+.heading {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: white;
+  align-items: center;
+  background: #4f46e5;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive grid */
+@media (max-width: 1024px) {
+  .container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .container { grid-template-columns: repeat(1, 1fr); }
+}
+

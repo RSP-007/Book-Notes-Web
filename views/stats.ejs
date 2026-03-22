@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stats</title>
+  <link rel="stylesheet" href="/stats.css">
+</head>
+<body>
+
+<div class="main-container">
+
+  <h1 class="heading">📊 Reading Stats</h1>
+
+  <div class="stats-grid">
+
+  <div class="stat-card">
+    <h2><%= total %></h2>
+    <p>Total Books</p>
+  </div>
+
+  <div class="stat-card">
+    <h2><%= avg ? Number(avg).toFixed(1) : "N/A" %></h2>
+    <p>Average Rating</p>
+  </div>
+
+  <div class="stat-card">
+    <h2><%= authors %></h2>
+    <p>Total Authors</p>
+  </div>
+
+  <div class="stat-card">
+    <% if (top) { %>
+      <h2><%= top.rating %> ⭐</h2>
+      <p>Top: <%= top.title %></p>
+    <% } %>
+  </div>
+
+  <div class="stat-card">
+    <% if (recent) { %>
+      <h2>📅</h2>
+      <p>Recent: <%= recent.title %></p>
+    <% } %>
+  </div>
+
+  <div class="stat-card">
+    <% if (mostAuthor) { %>
+      <h2><%= mostAuthor.count %></h2>
+      <p>Fav Author: <%= mostAuthor.author %></p>
+    <% } %>
+  </div>
+
+</div>
+
+  <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>

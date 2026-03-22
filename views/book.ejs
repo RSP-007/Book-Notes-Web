@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= book.title %></title>
+  <link rel="stylesheet" href="/book.css">
+</head>
+<body>
+
+<div class="book-container">
+
+  <img src="<%= book.cover_url %>" class="book-img">
+
+  <h1><%= book.title %></h1>
+
+  <p><b>Author:</b> <%= book.author %></p>
+  <p><b>Rating:</b> ⭐ <%= book.rating %></p>
+  <p><b>Date:</b> <%= book.date_read ? book.date_read.toDateString() : "N/A" %></p>
+
+  <div class="notes">
+    <h3>📖 Notes</h3>
+    <p><%= book.notes %></p>
+  </div>
+
+  <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>

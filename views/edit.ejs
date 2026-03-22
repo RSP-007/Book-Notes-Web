@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Book</title>
+  <link rel="stylesheet" href="/update.css">
 </head>
 <body>
 
-<h1>Edit Book</h1>
+<div class="main-container">
 
-<form action="/update" method="POST">
-  <input type="hidden" name="id" value="<%= book.id %>">
+  <h1 class="heading">✏️ Edit Book</h1>
 
-  <input name="title" value="<%= book.title %>">
-  <input name="author" value="<%= book.author %>">
-  <input name="rating" value="<%= book.rating %>">
-  <textarea name="notes"><%= book.notes %></textarea>
+  <form action="/update" method="POST" class="form-card">
 
-  <button>Update</button>
-</form>
+    <input type="hidden" name="id" value="<%= book.id %>">
+
+    <label>Title</label>
+    <input name="title" value="<%= book.title %>" required>
+
+    <label>Author</label>
+    <input name="author" value="<%= book.author %>" required>
+
+    <label>Rating (1–5)</label>
+    <input name="rating" type="number" min="1" max="5" value="<%= book.rating %>">
+
+    <label>Notes</label>
+    <textarea name="notes"><%= book.notes %></textarea>
+
+    <button type="submit">Update Book</button>
+
+  </form>
+
+</div>
 
 </body>
 </html>

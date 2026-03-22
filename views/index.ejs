@@ -6,37 +6,53 @@
 </head>
 <body>
 
+<h1 class="heading">📚 My Book Notes</h1>
+
 <div class="main-container">
-    
 
-  <h1>📚 My Book Notes</h1>
-
-  <div class="sort-buttons">
-  <a href="/?sort=rating"><button>⭐ Sort by Rating</button></a>
-  <a href="/?sort=date"><button>📅 Sort by Date</button></a>
-  <a href="/"><button>🔄 Default</button></a>
+  <div class="darkm-stats-button">
+    <a href="/stats"><button>📊 View Stats</button></a>
+    <button onclick="toggleDark()" class="toggle-btn">🌙</button>
   </div>
 
+  <!-- FORM -->
   <form action="/add" method="POST">
     <input name="title" placeholder="Title" required>
     <input name="author" placeholder="Author" required>
+
     <label>Rating:</label>
     <div class="stars">
-        <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
-        <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
-        <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
-        <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
-        <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+      <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+      <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+      <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+      <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+      <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
     </div>
+
     <input name="date" type="date">
     <textarea name="notes" placeholder="Notes"></textarea>
     <button>Add Book</button>
   </form>
 
-  <hr>
+  <hr class="hr">
 
+  <!-- SORT -->
+  <div class="sort-buttons">
+    <a href="/?sort=rating"><button>⭐ Sort by Rating</button></a>
+    <a href="/?sort=date"><button>📅 Sort by Date</button></a>
+    <a href="/"><button>🔄 Default</button></a>
+  </div>
+
+  <!-- SEARCH -->
+  <form method="GET" action="/" class="search-form">
+    <input type="text" name="search" placeholder="🔍 Search by title or author">
+    <button>Search</button>
+  </form>
+
+  <!-- BOOK CARDS -->
   <div class="container">
     <% books.forEach(book => { %>
+
       <div class="card">
 
         <% if (book.cover_url) { %>
@@ -44,27 +60,52 @@
         <% } %>
 
         <h2><%= book.title %></h2>
+        
+        <div class="c">
         <p><b>Author:</b> <%= book.author %></p>
-        <p>
-        <b>Rating:</b>
-        <%= "⭐".repeat(book.rating || 0) %>
-        </p>        
-        <p><%= book.notes %></p>
+        <p><b>Rating:</b> ⭐ <%= book.rating %></p>
+        <p><b>Date:</b> <%= book.date_read ? book.date_read.toDateString() : "N/A" %></p>
+        </div>
 
+        <!-- ACTION BUTTONS -->
         <div class="actions">
-          <form action="/delete" method="POST">
+
+          <a class="view-btn" href="/book/<%= book.id %>">View</a>
+
+          <form action="/delete" method="POST" class="f1">
             <input type="hidden" name="id" value="<%= book.id %>">
-            <button class="delete-btn">Delete</button>
+            <a><button class="delete-btn">Delete</button></a>
           </form>
 
           <a class="edit-link" href="/edit/<%= book.id %>">Edit</a>
+
         </div>
 
       </div>
+
     <% }) %>
   </div>
 
+  <hr class="hr2">
+
 </div>
+
+<footer class="footer">
+  <p>© 2026 Book Notes App • Built by Rsp 🚀</p>
+</footer>
+
+<script>
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+</script>
 
 </body>
 </html>
